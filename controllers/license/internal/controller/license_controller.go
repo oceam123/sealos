@@ -129,6 +129,7 @@ func (r *LicenseReconciler) reconcile(ctx context.Context, license *licensev1.Li
 
 // SetupWithManager sets up the controller with the Manager.
 func (r *LicenseReconciler) SetupWithManager(mgr ctrl.Manager, db *database.DataBase, accountDB database2.AccountV2) error {
+
 	r.Logger = mgr.GetLogger().WithName("controller").WithName("License")
 	r.Client = mgr.GetClient()
 
