@@ -20,11 +20,6 @@ export default function Assistant() {
       fontSize={'base'}
       fontWeight={'bold'}
       gap={'8px'}
-      onClick={() => {
-        message({
-          title: t('Under active development')
-        });
-      }}
     >
       <Icon
         width="29px"
