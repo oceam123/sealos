@@ -21,8 +21,10 @@ const setSession = useSessionStore((s) => s.setSession);
 
   useEffect( () => {
     const fetchData = async () => {
-       const name =router.query.name as string
-       const password=router.query.password as string
+       //const { user: name, password} = req.body;
+       console.log(router.query)
+       const name='admin'
+       const password='sealos2023'
        if (name &&password) {
          try {
            const inviterId = getInviterId();
@@ -35,11 +37,9 @@ const setSession = useSessionStore((s) => s.setSession);
                inviterId
              });
              if (!!result?.data) {
-              console.log('sessionConfig')
                await sessionConfig(result.data);
              }
-             console.log('sessionConfig success')
-             await router.replace('/');
+             return;
            } else if (result?.code === 201) {
                const regionResult = await passwordLoginRequest({
                  user: name,
@@ -65,13 +65,12 @@ const setSession = useSessionStore((s) => s.setSession);
                    // @ts-ignore
                    kubeconfig: result.data.kubeconfig
                  });
+                 console.log('完成')
                  await router.replace('/');
                }
              
            }
          } catch (error: any) {
-          await router.replace('/signin');
-          console.log('error')
 
          } 
        }
