@@ -5,7 +5,7 @@ import * as crypto from 'crypto';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { name,password}=req.body
-   
+
    if(name && password){
       const body={
         name:name,
@@ -13,7 +13,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
       const infoStr=  btoa(JSON.stringify(body));
       console.log('infoStr',infoStr)
-      res.redirect(`/ssoLogin?infoStr=${infoStr}`)
+      res.redirect(`/ssoRLogin?infoStr=${infoStr}`)
       return;
     }
     return jsonRes(res, {
